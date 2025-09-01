@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Resume Design System */
+
+@layer base {
+  :root {
+    /* Sistema de dois tons de preto */
+    
+    /* Preto mais escuro para seções principais */
+    --background-dark: 0 0% 4%; /* Preto mais escuro */
+    --background-light: 0 0% 8%; /* Preto mais claro */
+    
+    /* Fundo principal (preto escuro) */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%; /* Texto claro */
+
+    /* Cartões usam o preto mais claro */
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    
+    /* Elementos primários em cinza claro para contraste */
+    --primary: 0 0% 90%;
+    --primary-foreground: 0 0% 8%;
+    --primary-glow: 0 0% 90%;
+    
+    /* Secundário usa o preto mais claro */
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 95%;
+
+    /* Acento usa cinza médio */
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    /* Texto muted em cinza médio */
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Cores para títulos */
+    --hero-text: 0 0% 95%;
+    --hero-accent: 0 0% 65%;
+
+    /* Cores de status mantidas */
+    --success: 142.1 76.2% 36.3%;
+    --warning: 45.1 81.2% 60.8%;
+    --destructive: 0 84.2% 60.2%;
+    
+    /* Bordas em cinza escuro */
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 65%;
+    
+    --radius: 12px;
+    
+    /* Gradients minimalistas */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background-dark)) 0%, hsl(var(--background-light)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--accent)) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--hero-accent)) 100%);
+    
+    /* Sombras suaves */
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.05);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+  
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  /* Animation classes to work with Tailwind */
+  .animate-bounce-in {
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.7s ease-out forwards;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.9) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@layer utilities {
+  .text-hero {
+    color: hsl(var(--hero-text));
+  }
+  
+  .text-hero-accent {
+    color: hsl(var(--hero-accent));
+  }
+  
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
+
+  /* Classes para alternar fundos */
+  .bg-dark-section {
+    background-color: hsl(var(--background-dark));
+  }
+  
+  .bg-light-section {
+    background-color: hsl(var(--background-light));
+  }
+}
